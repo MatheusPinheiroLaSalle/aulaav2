@@ -1,0 +1,169 @@
+1-Faça um script shell que:
+- Pergunte por um nome e crie uma pasta e um arquivo.txt com o mesmo nome inserido.
+
+2-Quantos erros tem no script abaixo? Qual(is) são eles?
+case "$file" in
+    *.txt}
+        echo "É um arquivo de texto."
+        cat "$file"
+        
+    *.gif|*.jpg|*.png}
+        echo "É uma figura."
+        xloadimage "$file"
+        
+    *}
+        echo "Não sei que arquivo é esse."
+        
+esac
+
+3-Usando estrutura de repetição, faça um script para exibir todos os arquivos
+da pasta atual com tamanho maior que 500kb.
+
+4-Usando estrutura de repetição, faça um script para calcular e exibir quantas
+pastas e quantos arquivos tem na pasta atual.
+
+5-Faça um script que leia um numero IP e retorna se endereço responde ou não ao 
+comando ping.
+Além disso, se for digitado um ip vazio, o script deve informar ao usuario.
+
+Respostas aqui:
+
+1- #!bin/bash
+
+echo "Digite um nome:"
+read nome
+
+mkdir $nome
+touch $nome.txt
+	
+2- Dois erros:
+	Onde tem as chaves com a extensão do arquivo deveria fechar um parênteses )
+	Faltaram os pontos e vírgula ;; depois do fechamento de cada condição
+3-#!bin/bash
+
+for j in $(ls)
+do
+	if [ -f $j ];then
+		find -size "+500k"
+	fi
+	exit 0
+done
+
+
+
+4 - 
+#!bin/bash
+totalarq=0
+totalpasta=0
+for j in $(ls)
+do
+	if [ -d $j ];then
+		((totalpasta++))
+	elif [ -f $j ];then
+		((totalarq++))
+	fi
+done
+		echo "Total de Pastas:" $totalpasta
+		echo "Total de Arquivos:" $totalarq
+	
+5-
+#!bin/bash
+
+echo "Digite o ip desejado:"
+read ip
+		
+ping -c 1 $ip >> /dev/null
+		
+if [ $? -eq 0 ];then
+	echo "Respondeu"
+elif [ -z $? ];then
+	echo "Ip vazio"
+else
+	echo "Não respondeu"
+fi	  
+	
+--------------------------------------------------
+1-Faça um script shell que:
+- Pergunte por um nome e crie uma pasta e um arquivo.txt com o mesmo nome inserido.
+
+#!/bin/bash
+
+
+echo -e "digite o nome da pasta\n"
+read arq
+
+mkdir $arq
+touch $arq.txt
+
+
+
+2-Quantos erros tem no script abaixo? Qual(is) são eles?
+case "$file" in
+    *.txt}
+        echo "É um arquivo de texto."
+        cat "$file"
+        
+    *.gif|*.jpg|*.png}
+        echo "É uma figura."
+        xloadimage "$file"
+        
+    *}
+        echo "Não sei que arquivo é esse."
+        
+esac
+
+erros:
+erro 1- falta ;; no final de cada case
+erro 2- não se usa { e sim (
+erro 3- no inicio falta #!/bin/bash para informar que e um programa em bash
+erro 4- e priciso ler o $file, seja por parametro ou interacao com o usuario
+
+
+3-Usando estrutura de repetição, faça um script para exibir todos os arquivos
+da pasta atual com tamanho maior que 500kb.
+
+#!/bin/bash
+
+for j in $(ls)
+do
+        if($j -gt 500kb)
+        echo "$j"
+        fi
+done 
+
+
+4-Usando estrutura de repetição, faça um script para calcular e exibir quantas
+pastas e quantos arquivos tem na pasta atual.
+
+#!/bin/bash
+
+cont=0
+for j in $(ls)
+do
+   echo "$j"    
+cont=$(($cont+1))
+done 
+echo "total de arquivos na pasta e $cont"
+
+
+5-Faça um script que leia um numero IP e retorna se endereço responde ou não ao 
+comando ping.
+Além disso, se for digitado um ip vazio, o script deve informar ao usuario.
+
+#!/bin/bash
+
+echo "inform o ip"
+read ip
+
+if [ ! -z $ip ];then 
+        ping -c 1 $ip
+
+        if [ $? -eq 0 ];then
+                echo "maquina esta retotnando ip"
+        else
+                echo "maquina fora do ar"
+        fi
+else
+        echo "ip vazio"
+fi
+
