@@ -1,0 +1,58 @@
+pwd		Mostra caminho atual
+ls		Mostra pasta atual
+cd		Navega entre diretorios
+mkdir		Cria diretorio
+rmdir		Remove diretorio vazio
+rm		Remove arquivo
+mv	Renomeia arquivo
+cp	Copia pasta ou arquivo
+cp -r	Copia todos arquivos ou pastas
+|	Saida de um comando para outro
+[]	Range de caracteres	ls file[1-4]
+>	Redirecionar saida
+cat	Vê arquivo
+less	Vê com scroll
+
+tail -nx	Mostra x linhas finais
+head -nx	Mostra x linhas iniciais
+touch		Cria arquivo vazio
+touch -t	Coloca hora no arquivo		touch -t 03201600 file	Criado 20/03 as 16:00 horas
+rm -f		Força remoção do arquivo
+rm -rf		Remove diretorio recursivo
+man tail	Monitora arquivo
+find -name	Acha arquivo no diretorio	find /usr -name file
+
+zip backup *		Faz zip do diretorio atual no arquivo backup.zip
+unzip backup.zip	Extrai todos os arquivos no diretorio atual
+wget url		Baixa o aquivo da url
+nano			Editor de texto
+
+echo blabla > file		Cria o arquivo file com o texto blabla dentro
+cat file1 file2 > newfile	Combina os arquivos dentro de newfile
+cat file >> existente		Coloca file no final de existente
+echo string			Imprime string
+echo -e string			Habilita caracter especial \n nova linha \t guia horizontal
+sort file			Ordena de forma alfabetica
+cat file1 file2 | sort		Combina dois arquivos e ordena
+sort -r file			Ordena de forma contraria
+sort -u file1 file2 > file3	Ordena, Tira repetição e coloca no file3
+uniq -c file			Conta duplicadas
+uniq -d file			Mostra mais frequente
+sort file | uniq		Ordena e remove duplicadas
+past file1 file2		Coloca uma coluna correspondente no aquivo
+grep "isso" file		Imprime linhas que tem isso
+grep -v "isso" file		Imprime linhas que não tem isso
+grep [0-9] file			Imprime Linhas que tem algum numero entre 0 e 9
+cp file1 file2			Copia o file1 no file2
+cp file1 /tmp			Copia o aquivo para o diretorio tmp
+cp * /tmp			Copia todos os aquivos do diretorio atual para tmp
+cp /bin/* . 			Copia todos os aquivos de bin para o diretorio atual
+cp /bin/file1 . 		Copia File1 de bin para diretorio atual
+cp -r /bin /tmp			Copia o diretorio bin para o diretorio tmp
+cp -r /bin/* /tmp		Copia todos os diretorios dentro de bin para tmp
+find . -name 'pasta*' | wc -l	Acha no diretorio atual as pastas com nome pasta e conta quantas tem
+git clone url			Clonar repositorio
+git add .			Submeter todo o conteudo do diretorio atual
+git commit -m "mensagem"	Colocar mensagem
+git push			Enviar
+git pull			Sincronizar sua pasta com o git
